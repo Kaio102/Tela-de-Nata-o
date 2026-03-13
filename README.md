@@ -115,4 +115,32 @@ Column(
     CardGrupoNatacao("Competição Livre","28 membros * 19:00","Avançado * Noite",Color(0xFF009688))
 
     }
+    // Container:Dicas (Estilo Image_23A3C3)
+    SecaoTituloNatacao("Dicas Diárias",corNatacao,Icons.Default.Lightbulb)
+
+    CardDicaNatacao(
+        titulo="Respiração Correta",
+        texto="Expire debaixo d'água e inspire rapidamente quando virar a cabeca para o lado.",
+        corFundo=Color(0xFFC5CAE9)//Lilás conforme image_23a3c3.png 
+    )
+    Space(modifier=Modifier.height(12.dp))
+
+    CardDicaNatacao(
+        titulo-"Aquecimento",
+        texto="Sempre faça 5-10 minutos de Aquecimento antes de começar o treino principal.",
+        corFundo=Color(0xFFB2DFDB)//Ciano suave conforme image_23a3c3.png
+    )
+    Space(modifier=Modifier.height(30.dp))
+      }
+    }
   }
+  // Componentes com containers modernos
+
+@Composable
+fun SecaoTituloNatacao(titulo:String,cor:Color,icone:androidx.compose.ui.graphics.vector.ImageVector){
+    Row(modifier=Modifier.padding(16.dp),verticalAlignment=Alignment.CenterVertically){
+        Icon(icone,null,tint=cor,modifier=Modifier.size(22.dp))
+        Spacer(modifier=Modifier.width(8.dp))
+        Text(titulo,fontSize=18.sp,fontWeight=FontWeight.ExtraBold,color=cor)
+    }
+}
