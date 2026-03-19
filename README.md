@@ -144,3 +144,85 @@ fun SecaoTituloNatacao(titulo:String,cor:Color,icone:androidx.compose.ui.graphic
         Text(titulo,fontSize=18.sp,fontWeight=FontWeight.ExtraBold,color=cor)
     }
 }
+@Composable
+fub CardLocalNatacao(nome:String,info:String,status:String,cor:Color,onClick:()->Unit){
+    Card(
+        modifier=Modifier
+        .fillMaxWidth()
+        .padding(bottom=12.dp)
+        .clickable{onClick()},
+        colors=CardDefaults.cardColors(containerColor=Color.White),
+        border=BorderStroke(1.dp,cor.copy(alpha=0.2f)),
+        shape=RoundedCornerShape(16.dp),
+        elevation=CardDefaults.cardElevation(2.dp)
+    ){
+        Row(modifier=Modifier.padding(16.dp),verticalAlignment=Alignment.CenterVertically){
+            Surface(
+                modifier=Modifier.size(55.dp),
+                shape=RoundedCornerShape(12.dp),
+                color=cor.copy(alpha=0.1f)
+            ){
+                Icon(Icons.Default.Pool,null,tint=cor,modifier=Modifier.padding(12.dp))
+            }
+            Column(modifier=Modifier.padding(Start=16.dp).weight(1f)){
+                Text(nome,fontWeight=FontWeight.Bold,fontSize=16.sp)
+                Text(info,fontSize=12.sp,color=Color.Gray)
+                Text(status,fontSize=12.sp,color=cor,fontWeight=FontWeight.SemiBold)
+            }
+            Icon(Icons.Default.ArrowForwardlos,null,tint=Color.LightGray,modifier=Modifier.size(16.dp))
+        }
+    }
+}
+@Composable
+fun CardGrupoNatacao(nome:String,membros:String,status:String,cor:Color){
+    Card(
+        modifier=Modifier
+        .fillMaxWidth()
+        .padding(bottom=10.dp),
+        colors=CardDefaults.cardColors(containerColor=Color.White),
+        shape=RoundedCornerShape(16.dp),
+        elevation=CardDefaults.cardElevation(1.dp)
+    ){
+        Row(modifier=Modifier.padding(16.dp),verticalAlignment=Alignment.CenterVertically){
+            Surface(modifier=Modifier.size(48.dp),shape=CircleShape,color=cor){
+                Icon(Icons.Default.Groups,null,tint=Color.White,modifier=Modifier.padding(10.dp))
+            }
+            Column(modifier=Modifier.padding(start=16.dp).weight(1f)){
+                Text(nome,fontWeight=FontWeight.Bold,fontSize=15.sp)
+                Text(membros,fontSize=12.sp,color=Color.Gray)
+                Text(status,fontSize=12.sp,color=cor,fontWeight=FontWeight.Bold)
+            }
+            Button(
+                onClick={},
+                colors=ButtonDefaults.buttonColors(containerColor=cor),
+                shape=RoundedCornerShape(10.dp)           
+            ){
+                Text("Entrar",fontSize=12.sp,fontWeight=FontWeight.Bold)
+            }
+        }
+    }
+}
+@Composable
+fun CardDicaNatacao(titulo:String,texto:String,corFundo:Color){
+    Card(
+        modifier=Modifier
+        .fillMaxWidth()
+        .padding(horizontal=16.dp),
+        colors=CardDefaults.cardColors(containerColor=corFundo),
+        shape=RoundedCornerShape(16.dp)
+    ){
+        Row(modifier=Modifier.padding(20.dp),verticalAlignment=Alignment.CenterVertically){
+            Icon(Icons.Default.Lightbulb,null,tint=Color(0xFF3F51B5))
+            Spacer(modifier=Modifier.width(16.dp))
+            Column{
+                Text(titulo,fontWeight=FontWeight.Black,color=Color(0xFF303F9F),fontSize=15.sp)
+                Text(texto,fontSize=13.sp,color=Color.DarkGray)
+            }
+        }
+    }
+}
+@Preview(showSystemUi=true)
+@Composable
+fun PreviewNatacaoContainer(){
+    TelaNatacao(onVoltar={},onReservar={})
+}
